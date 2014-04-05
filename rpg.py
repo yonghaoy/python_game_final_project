@@ -27,10 +27,10 @@ listaImagensLadoDireito,
 listaImagensCostas
 ]
 
-# mover personagem para a esquerda
+# move player to left
 
 
-def MPE(teclas,personagem):
+def MPL(teclas,personagem):
     global filaE
     if teclas[K_LEFT] and not teclas[K_DOWN] and not teclas[K_UP]:
         personagem.image = pygame.image.load(listaImagensLadoEsquerdo[filaE])
@@ -43,7 +43,7 @@ def MPE(teclas,personagem):
 #mover personagem para a direita
 
 
-def MPD(teclas,personagem):
+def MPR(teclas,personagem):
     global filaD
     if teclas[K_RIGHT] and not teclas[K_DOWN] and not teclas[K_UP]:
         personagem.image = pygame.image.load(listaImagensLadoDireito[filaD])
@@ -54,10 +54,10 @@ def MPD(teclas,personagem):
         if filaD > 2:
             filaD = 0
 
-# mover personagem para cima
+# mover plater up
 
 
-def MPC(teclas,personagem):
+def MPU(teclas,personagem):
     global filaC
     if teclas[K_UP]:
         personagem.image = pygame.image.load(listaImagensCostas[filaC])
@@ -71,7 +71,7 @@ def MPC(teclas,personagem):
 # mover personagem para baixo
 
 
-def MPB(teclas,personagem):
+def MPD(teclas,personagem):
     global filaF
     if teclas[K_DOWN]:
         personagem.image = pygame.image.load(listaImagensFrente[filaF])
@@ -102,7 +102,7 @@ def main():
 
 	lx = [b for b in range(-4, 76)]
 	l1 = [-10]
-	l2 = [6]
+	l2 = [10]
 
 	#parede esquerda
 	parede = [x for x in range(-10, 16)]
@@ -129,19 +129,19 @@ def main():
 	    if teclas[27]:  # tecla ESC
 	        pygame.quit()
 	        sys.exit()
-	    if personagem.py in l1:
-	        MPB(teclas,personagem)
+	    if personagem.py in l1:  #player in the top
 	        MPD(teclas,personagem)
-	        MPE(teclas,personagem)
-	    elif personagem.py in l2:
-	        MPC(teclas,personagem)
-	        MPD(teclas,personagem)
-	        MPE(teclas,personagem)
+	        MPR(teclas,personagem)
+	        MPL(teclas,personagem)
+	    elif personagem.py in l2: #player in the bottom
+	        MPT(teclas,personagem)
+	        MPR(teclas,personagem)
+	        MPL(teclas,personagem)
 	    else:
-	        MPE(teclas,personagem)
+	        MPU(teclas,personagem)
 	        MPD(teclas,personagem)
-	        MPC(teclas,personagem)
-	        MPB(teclas,personagem)
+	        MPL(teclas,personagem)
+	        MPR(teclas,personagem)
 
 	    if personagem.px == iniciarConversa[0] and personagem.py == iniciarConversa[1]:
 	        tela.blit(frase.frases, (200, 500))

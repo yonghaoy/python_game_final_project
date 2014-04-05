@@ -3,7 +3,7 @@
 try:
   import pygame
 except Exception:
-  print(" O Pygame não está instalado")
+  print("no pygame found")
 
 from pygame.locals import *
 from pygame.sprite import Sprite
@@ -64,7 +64,7 @@ class Npcs(Personagens):
 
 class Textos():
     '''
-    Classe que gerencia todos os textos do jogo.
+    Classe que gerencia todos os textos do jogo.Class that manages all texts in the game
     '''
 
     def __init__(self, tamanho, dialogo, arquivoDeFonte, cor=branco, antialias=True):  # antialias faz um tratamento na imagem
