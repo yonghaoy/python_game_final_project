@@ -5,7 +5,6 @@ from Classes import *
 from Cores import *
 import sys
 from pygame.sprite import Sprite, RenderUpdates
-
 FPS = 16
 
 filaF, filaC, filaE, filaD = 0, 0, 0, 0
@@ -102,7 +101,7 @@ def main():
 
 	lx = [b for b in range(-4, 76)]
 	l1 = [-10]
-	l2 = [10]
+	l2 = [20]
 
 	#parede esquerda
 	parede = [x for x in range(-10, 16)]
@@ -110,7 +109,7 @@ def main():
 
 
 	#===================================
-	iniciarConversa = [43, 0]
+	iniciarConversa = [53,-10]
 
 	teclas = {K_LEFT: False, K_RIGHT: False, K_UP: False, K_DOWN: False,
 	          K_RETURN: False, 27: False}  # obs 27 = tecla 'esc'
@@ -144,9 +143,11 @@ def main():
 	        MPR(teclas,personagem)
 
 	    if personagem.px == iniciarConversa[0] and personagem.py == iniciarConversa[1]:
-	        tela.blit(frase.frases, (200, 500))
-	        pygame.display.flip()
-
+	       # tela.blit(frase.frases, (200, 500))
+	       # pygame.display.flip()
+           # squirrel.runGame
+             import squirrel
+             squirrel.main()
 	    print(personagem.px, personagem.py)
 
 	    grupo.clear(tela, fundo)
