@@ -99,9 +99,9 @@ def main():
 
 	#===================================
 
-	lx = [b for b in range(-4, 76)]
-	l1 = [-10]
-	l2 = [50]
+	lx = [b for b in range(-15, 30)]
+	l1 = [-30]
+	l2 = [30]
 
 	#parede esquerda
 	parede = [x for x in range(-10, 16)]
@@ -109,7 +109,7 @@ def main():
 
 
 	#===================================
-	iniciarConversa = [63,44,98,-10,53,-10]
+	iniciarConversa = [52,6,36,-20,55,-10]
 
 	teclas = {K_LEFT: False, K_RIGHT: False, K_UP: False, K_DOWN: False,
 	          K_RETURN: False, 27: False}  # obs 27 = tecla 'esc'
