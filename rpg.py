@@ -101,7 +101,7 @@ def main():
 
 	lx = [b for b in range(-4, 76)]
 	l1 = [-10]
-	l2 = [20]
+	l2 = [50]
 
 	#parede esquerda
 	parede = [x for x in range(-10, 16)]
@@ -109,7 +109,7 @@ def main():
 
 
 	#===================================
-	iniciarConversa = [53,-10,98,-10]
+	iniciarConversa = [63,44,98,-10,53,-10]
 
 	teclas = {K_LEFT: False, K_RIGHT: False, K_UP: False, K_DOWN: False,
 	          K_RETURN: False, 27: False}  # obs 27 = tecla 'esc'
@@ -148,6 +148,8 @@ def main():
 	    if personagem.px == iniciarConversa[2] and personagem.py == iniciarConversa[3]:
              import flippy
              flippy.main()
+	    if personagem.px == iniciarConversa[4] and personagem.py == iniciarConversa[5]:
+             import flippy
 	    print(personagem.px, personagem.py)
         
 	    grupo.clear(tela, fundo)
