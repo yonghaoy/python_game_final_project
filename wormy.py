@@ -25,7 +25,8 @@ GREEN     = (  0, 255,   0)
 DARKGREEN = (  0, 155,   0)
 DARKGRAY  = ( 40,  40,  40)
 BGCOLOR = BLACK
-
+UNC_BLUE  = ( 86, 160, 211)
+DUKE_BLUE = (  0,  26,  87)
 UP = 'up'
 DOWN = 'down'
 LEFT = 'left'
@@ -132,8 +133,8 @@ def checkForKeyPress():
     
 def showStartScreen():
     titleFont = pygame.font.Font('freesansbold.ttf', 100)
-    titleSurf1 = titleFont.render('Wormy!', True, WHITE, DARKGREEN)
-    titleSurf2 = titleFont.render('Wormy!', True, GREEN)
+    titleSurf1 = titleFont.render('GO HEELS!', True, WHITE, DARKGREEN)
+    titleSurf2 = titleFont.render('GO HEELS!', True, UNC_BLUE)
 
     degrees1 = 0
     degrees2 = 0
@@ -190,7 +191,8 @@ def showGameOverScreen():
     pygame.event.get()  #clear out event queue 
     while True:
         if checkForKeyPress():
-            return
+            import rpg
+            rpg.main()
 #KRT 12/06/2012 reduce processor loading in gameover screen.
         pygame.time.wait(100)
 
@@ -206,16 +208,16 @@ def drawWorm(wormCoords):
         x = coord['x'] * CELLSIZE
         y = coord['y'] * CELLSIZE
         wormSegmentRect = pygame.Rect(x, y, CELLSIZE, CELLSIZE)
-        pygame.draw.rect(DISPLAYSURF, DARKGREEN, wormSegmentRect)
+        pygame.draw.rect(DISPLAYSURF, UNC_BLUE, wormSegmentRect)
         wormInnerSegmentRect = pygame.Rect(x + 4, y + 4, CELLSIZE - 8, CELLSIZE - 8)
-        pygame.draw.rect(DISPLAYSURF, GREEN, wormInnerSegmentRect)
+        pygame.draw.rect(DISPLAYSURF, UNC_BLUE, wormInnerSegmentRect)
 
 
 def drawApple(coord):
     x = coord['x'] * CELLSIZE
     y = coord['y'] * CELLSIZE
     appleRect = pygame.Rect(x, y, CELLSIZE, CELLSIZE)
-    pygame.draw.rect(DISPLAYSURF, RED, appleRect)
+    pygame.draw.rect(DISPLAYSURF, DUKE_BLUE, appleRect)
 
 
 def drawGrid():
