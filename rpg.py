@@ -109,7 +109,7 @@ def main():
 
 
 	#===================================
-	iniciarConversa = [53,-10]
+	iniciarConversa = [53,-10,98,-10]
 
 	teclas = {K_LEFT: False, K_RIGHT: False, K_UP: False, K_DOWN: False,
 	          K_RETURN: False, 27: False}  # obs 27 = tecla 'esc'
@@ -143,13 +143,13 @@ def main():
 	        MPR(teclas,personagem)
 
 	    if personagem.px == iniciarConversa[0] and personagem.py == iniciarConversa[1]:
-	       # tela.blit(frase.frases, (200, 500))
-	       # pygame.display.flip()
-           # squirrel.runGame
              import squirrel
              squirrel.main()
+	    if personagem.px == iniciarConversa[2] and personagem.py == iniciarConversa[3]:
+             import flippy
+             flippy.main()
 	    print(personagem.px, personagem.py)
-
+        
 	    grupo.clear(tela, fundo)
 	    pygame.display.update(grupo.draw(tela))
 
