@@ -149,7 +149,8 @@ def main():
              import flippy
              flippy.main()
 	    if personagem.px == iniciarConversa[4] and personagem.py == iniciarConversa[5]:
-             import flippy
+             import wormy
+             wormy.main()
 	    print(personagem.px, personagem.py)
         
 	    grupo.clear(tela, fundo)

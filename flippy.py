@@ -187,7 +187,7 @@ def runGame():
     DISPLAYSURF.blit(textSurf, textRect)
 
     # Display the "Play again?" text with Yes and No buttons.
-    text2Surf = BIGFONT.render('Play again?', True, TEXTCOLOR, TEXTBGCOLOR1)
+    text2Surf = BIGFONT.render('Study again?', True, TEXTCOLOR, TEXTBGCOLOR1)
     text2Rect = text2Surf.get_rect()
     text2Rect.center = (int(WINDOWWIDTH / 2), int(WINDOWHEIGHT / 2) + 50)
 
@@ -210,7 +210,8 @@ def runGame():
                 if yesRect.collidepoint( (mousex, mousey) ):
                     return True
                 elif noRect.collidepoint( (mousex, mousey) ):
-                    return False
+                    import rpg
+                    rpg.main()
         DISPLAYSURF.blit(textSurf, textRect)
         DISPLAYSURF.blit(text2Surf, text2Rect)
         DISPLAYSURF.blit(yesSurf, yesRect)
