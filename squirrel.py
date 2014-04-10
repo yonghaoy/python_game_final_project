@@ -16,7 +16,7 @@ GRASSCOLOR = (24, 255, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 
-CAMERASLACK = 90     # how far from the center the squirrel moves before moving the camera
+CAMERASLACK = 90     # how far from the center the devil moves before moving the camera
 MOVERATE = 9         # how fast the player moves
 BOUNCERATE = 6       # how fast the player bounces (large is slower)
 BOUNCEHEIGHT = 30    # how high the player bounces
@@ -27,15 +27,15 @@ GAMEOVERTIME = 4     # how long the "game over" text stays on the screen in seco
 MAXHEALTH = 3        # how much health the player starts with
 
 NUMGRASS = 80        # number of grass objects in the active area
-NUMSQUIRRELS = 30    # number of squirrels in the active area
-SQUIRRELMINSPEED = 3 # slowest squirrel speed
-SQUIRRELMAXSPEED = 7 # fastest squirrel speed
+NUMDEVILS = 30    # number of devils in the active area
+DEVILMINSPEED = 3 # slowest devil speed
+DEVILMAXSPEED = 7 # fastest devil speed
 DIRCHANGEFREQ = 2    # % chance of direction change per frame
 LEFT = 'left'
 RIGHT = 'right'
 
 """
-This program has three data structures to represent the player, enemy squirrels, and grass background objects. The data structures are dictionaries with the following keys:
+This program has three data structures to represent the player, enemy devils, and grass background objects. The data structures are dictionaries with the following keys:
 
 Keys used by all three data structures:
     'x' - the left edge coordinate of the object in the game world (not a pixel coordinate on the screen)
@@ -46,8 +46,8 @@ Player data structure keys:
     'facing' - either set to LEFT or RIGHT, stores which direction the player is facing.
     'size' - the width and height of the player in pixels. (The width & height are always the same.)
     'bounce' - represents at what point in a bounce the player is in. 0 means standing (no bounce), up to BOUNCERATE (the completion of the bounce)
-    'health' - an integer showing how many more times the player can be hit by a larger squirrel before dying.
-Enemy Squirrel data structure keys:
+    'health' - an integer showing how many more times the player can be hit by a larger devil before dying.
+Enemy Devil data structure keys:
     'surface' - the pygame.Surface object that stores the image of the squirrel which will be drawn to the screen.
     'movex' - how many pixels per frame the squirrel moves horizontally. A negative integer is moving to the left, a positive to the right.
     'movey' - how many pixels per frame the squirrel moves vertically. A negative integer is moving up, a positive moving down.
@@ -61,7 +61,7 @@ Grass data structure keys:
 """
 
 def main():
-    global FPSCLOCK, DISPLAYSURF, BASICFONT, L_SQUIR_IMG, R_SQUIR_IMG, GRASSIMAGES
+    global FPSCLOCK, DISPLAYSURF, BASICFONT, L_RAM_IMG, R_RAM_IMG, L_DEVIL_IMG, R_DEVIL_IMG, GRASSIMAGES
 
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
@@ -71,8 +71,10 @@ def main():
     BASICFONT = pygame.font.Font('freesansbold.ttf', 32)
 
     # load the image files
-    L_SQUIR_IMG = pygame.image.load('tarheel.jpg')
-    R_SQUIR_IMG = pygame.transform.flip(L_SQUIR_IMG, True, False)
+    L_RAM_IMG = pygame.image.load('ramesesL.png')
+    R_RAM_IMG = pygame.transform.flip(L_RAM_IMG, True, False)
+    L_DEVIL_IMG = pygame.image.load('devilL.png')
+    R_DEVIL_IMG = pygame.transform.flip(L_DEVIL_IMG, True, False)
     GRASSIMAGES = []
     for i in range(1, 5):
         GRASSIMAGES.append(pygame.image.load('grass%s.png' % i))
@@ -107,9 +109,9 @@ def runGame():
     cameray = 0
 
     grassObjs = []    # stores all the grass objects in the game
-    squirrelObjs = [] # stores all the non-player squirrel objects
+    devilObjs = [] # stores all the non-player devil objects
     # stores the player object:
-    playerObj = {'surface': pygame.transform.scale(L_SQUIR_IMG, (STARTSIZE, STARTSIZE)),
+    playerObj = {'surface': pygame.transform.scale(L_RAM_IMG, (STARTSIZE, STARTSIZE)),
                  'facing': LEFT,
                  'size': STARTSIZE,
                  'x': HALF_WINWIDTH,
@@ -133,38 +135,38 @@ def runGame():
         if invulnerableMode and time.time() - invulnerableStartTime > INVULNTIME:
             invulnerableMode = False
 
-        # move all the squirrels
-        for sObj in squirrelObjs:
-            # move the squirrel, and adjust for their bounce
-            sObj['x'] += sObj['movex']
-            sObj['y'] += sObj['movey']
-            sObj['bounce'] += 1
-            if sObj['bounce'] > sObj['bouncerate']:
-                sObj['bounce'] = 0 # reset bounce amount
+        # move all the devils
+        for dObj in devilObjs:
+            # move the devil, and adjust for their bounce
+            dObj['x'] += dObj['movex']
+            dObj['y'] += dObj['movey']
+            dObj['bounce'] += 1
+            if dObj['bounce'] > dObj['bouncerate']:
+                dObj['bounce'] = 0 # reset bounce amount
 
             # random chance they change direction
             if random.randint(0, 99) < DIRCHANGEFREQ:
-                sObj['movex'] = getRandomVelocity()
-                sObj['movey'] = getRandomVelocity()
-                if sObj['movex'] > 0: # faces right
-                    sObj['surface'] = pygame.transform.scale(R_SQUIR_IMG, (sObj['width'], sObj['height']))
+                dObj['movex'] = getRandomVelocity()
+                dObj['movey'] = getRandomVelocity()
+                if dObj['movex'] > 0: # faces right
+                    dObj['surface'] = pygame.transform.scale(R_DEVIL_IMG, (dObj['width'], dObj['height']))
                 else: # faces left
-                    sObj['surface'] = pygame.transform.scale(L_SQUIR_IMG, (sObj['width'], sObj['height']))
+                    dObj['surface'] = pygame.transform.scale(L_DEVIL_IMG, (dObj['width'], dObj['height']))
 
 
         # go through all the objects and see if any need to be deleted.
         for i in range(len(grassObjs) - 1, -1, -1):
             if isOutsideActiveArea(camerax, cameray, grassObjs[i]):
                 del grassObjs[i]
-        for i in range(len(squirrelObjs) - 1, -1, -1):
-            if isOutsideActiveArea(camerax, cameray, squirrelObjs[i]):
-                del squirrelObjs[i]
+        for i in range(len(devilObjs) - 1, -1, -1):
+            if isOutsideActiveArea(camerax, cameray, devilObjs[i]):
+                del devilObjs[i]
 
         # add more grass & squirrels if we don't have enough.
         while len(grassObjs) < NUMGRASS:
             grassObjs.append(makeNewGrass(camerax, cameray))
-        while len(squirrelObjs) < NUMSQUIRRELS:
-            squirrelObjs.append(makeNewSquirrel(camerax, cameray))
+        while len(devilObjs) < NUMDEVILS:
+            devilObjs.append(makeNewDevil(camerax, cameray))
 
         # adjust camerax and cameray if beyond the "camera slack"
         playerCenterx = playerObj['x'] + int(playerObj['size'] / 2)
@@ -190,16 +192,16 @@ def runGame():
             DISPLAYSURF.blit(GRASSIMAGES[gObj['grassImage']], gRect)
 
 
-        # draw the other squirrels
-        for sObj in squirrelObjs:
-            sObj['rect'] = pygame.Rect( (sObj['x'] - camerax,
-                                         sObj['y'] - cameray - getBounceAmount(sObj['bounce'], sObj['bouncerate'], sObj['bounceheight']),
-                                         sObj['width'],
-                                         sObj['height']) )
-            DISPLAYSURF.blit(sObj['surface'], sObj['rect'])
+        # draw the devils
+        for dObj in devilObjs:
+            dObj['rect'] = pygame.Rect( (dObj['x'] - camerax,
+                                         dObj['y'] - cameray - getBounceAmount(dObj['bounce'], dObj['bouncerate'], dObj['bounceheight']),
+                                         dObj['width'],
+                                         dObj['height']) )
+            DISPLAYSURF.blit(dObj['surface'], dObj['rect'])
 
 
-        # draw the player squirrel
+        # draw the player ram
         flashIsOn = round(time.time(), 1) * 10 % 2 == 1
         if not gameOverMode and not (invulnerableMode and flashIsOn):
             playerObj['rect'] = pygame.Rect( (playerObj['x'] - camerax,
@@ -227,13 +229,13 @@ def runGame():
                     moveRight = False
                     moveLeft = True
                     if playerObj['facing'] != LEFT: # change player image
-                        playerObj['surface'] = pygame.transform.scale(L_SQUIR_IMG, (playerObj['size'], playerObj['size']))
+                        playerObj['surface'] = pygame.transform.scale(L_RAM_IMG, (playerObj['size'], playerObj['size']))
                     playerObj['facing'] = LEFT
                 elif event.key in (K_RIGHT, K_d):
                     moveLeft = False
                     moveRight = True
                     if playerObj['facing'] != RIGHT: # change player image
-                        playerObj['surface'] = pygame.transform.scale(R_SQUIR_IMG, (playerObj['size'], playerObj['size']))
+                        playerObj['surface'] = pygame.transform.scale(R_RAM_IMG, (playerObj['size'], playerObj['size']))
                     playerObj['facing'] = RIGHT
                 elif winMode and event.key == K_r:
                     return
@@ -270,20 +272,20 @@ def runGame():
                 playerObj['bounce'] = 0 # reset bounce amount
 
             # check if the player has collided with any squirrels
-            for i in range(len(squirrelObjs)-1, -1, -1):
-                sqObj = squirrelObjs[i]
-                if 'rect' in sqObj and playerObj['rect'].colliderect(sqObj['rect']):
-                    # a player/squirrel collision has occurred
+            for i in range(len(devilObjs)-1, -1, -1):
+                dvObj = devilObjs[i]
+                if 'rect' in dvObj and playerObj['rect'].colliderect(dvObj['rect']):
+                    # a player/devil collision has occurred
 
-                    if sqObj['width'] * sqObj['height'] <= playerObj['size']**2:
+                    if dvObj['width'] * dvObj['height'] <= playerObj['size']**2:
                         # player is larger and eats the squirrel
-                        playerObj['size'] += int( (sqObj['width'] * sqObj['height'])**0.2 ) + 1
-                        del squirrelObjs[i]
+                        playerObj['size'] += int( (dvObj['width'] * dvObj['height'])**0.2 ) + 1
+                        del devilObjs[i]
 
                         if playerObj['facing'] == LEFT:
-                            playerObj['surface'] = pygame.transform.scale(L_SQUIR_IMG, (playerObj['size'], playerObj['size']))
+                            playerObj['surface'] = pygame.transform.scale(L_RAM_IMG, (playerObj['size'], playerObj['size']))
                         if playerObj['facing'] == RIGHT:
-                            playerObj['surface'] = pygame.transform.scale(R_SQUIR_IMG, (playerObj['size'], playerObj['size']))
+                            playerObj['surface'] = pygame.transform.scale(R_RAM_IMG, (playerObj['size'], playerObj['size']))
 
                         if playerObj['size'] > WINSIZE:
                             winMode = True # turn on "win mode"
@@ -333,7 +335,7 @@ def getBounceAmount(currentBounce, bounceRate, bounceHeight):
     return int(math.sin( (math.pi / float(bounceRate)) * currentBounce ) * bounceHeight)
 
 def getRandomVelocity():
-    speed = random.randint(SQUIRRELMINSPEED, SQUIRRELMAXSPEED)
+    speed = random.randint(DEVILMINSPEED, DEVILMAXSPEED)
     if random.randint(0, 1) == 0:
         return speed
     else:
@@ -353,23 +355,23 @@ def getRandomOffCameraPos(camerax, cameray, objWidth, objHeight):
             return x, y
 
 
-def makeNewSquirrel(camerax, cameray):
-    sq = {}
+def makeNewDevil(camerax, cameray):
+    dv = {}
     generalSize = random.randint(5, 25)
     multiplier = random.randint(1, 3)
-    sq['width']  = (generalSize + random.randint(0, 10)) * multiplier
-    sq['height'] = (generalSize + random.randint(0, 10)) * multiplier
-    sq['x'], sq['y'] = getRandomOffCameraPos(camerax, cameray, sq['width'], sq['height'])
-    sq['movex'] = getRandomVelocity()
-    sq['movey'] = getRandomVelocity()
-    if sq['movex'] < 0: # squirrel is facing left
-        sq['surface'] = pygame.transform.scale(L_SQUIR_IMG, (sq['width'], sq['height']))
-    else: # squirrel is facing right
-        sq['surface'] = pygame.transform.scale(R_SQUIR_IMG, (sq['width'], sq['height']))
-    sq['bounce'] = 0
-    sq['bouncerate'] = random.randint(10, 18)
-    sq['bounceheight'] = random.randint(10, 50)
-    return sq
+    dv['width']  = (generalSize + random.randint(0, 10)) * multiplier
+    dv['height'] = (generalSize + random.randint(0, 10)) * multiplier
+    dv['x'], dv['y'] = getRandomOffCameraPos(camerax, cameray, dv['width'], dv['height'])
+    dv['movex'] = getRandomVelocity()
+    dv['movey'] = getRandomVelocity()
+    if dv['movex'] < 0: # devil is facing left
+        dv['surface'] = pygame.transform.scale(L_DEVIL_IMG, (dv['width'], dv['height']))
+    else: # devil is facing right
+        dv['surface'] = pygame.transform.scale(R_DEVIL_IMG, (dv['width'], dv['height']))
+    dv['bounce'] = 0
+    dv['bouncerate'] = random.randint(10, 18)
+    dv['bounceheight'] = random.randint(10, 50)
+    return dv
 
 
 def makeNewGrass(camerax, cameray):
