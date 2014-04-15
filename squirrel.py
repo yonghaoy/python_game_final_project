@@ -71,9 +71,9 @@ def main():
     BASICFONT = pygame.font.Font('freesansbold.ttf', 32)
 
     # load the image files
-    L_RAM_IMG = pygame.image.load('ramesesL.png')
+    L_RAM_IMG = pygame.image.load('sprites/ramesesL.png')
     R_RAM_IMG = pygame.transform.flip(L_RAM_IMG, True, False)
-    L_DEVIL_IMG = pygame.image.load('devilL.png')
+    L_DEVIL_IMG = pygame.image.load('sprites/devilL.png')
     R_DEVIL_IMG = pygame.transform.flip(L_DEVIL_IMG, True, False)
     GRASSIMAGES = []
     for i in range(1, 5):
