@@ -9,14 +9,10 @@ FPS = 16
 
 filaF, filaC, filaE, filaD = 0, 0, 0, 0
 
-listaImagensFrente = ["sprites/danteFrente1.png",
-                      "sprites/danteFrente2.png", "sprites/danteFrente3.png"]
-listaImagensLadoEsquerdo = ["sprites/danteLadoEsquerdo1.png",
-                            "sprites/danteLadoEsquerdo2.png", "sprites/danteLadoEsquerdo3.png"]
-listaImagensLadoDireito = ["sprites/danteLadoDireito1.png",
-                           "sprites/danteLadoDireito2.png", "sprites/danteLadoDireito3.png"]
-listaImagensCostas = ["sprites/danteCostas1.png",
-                      "sprites/danteCostas2.png", "sprites/danteCostas3.png"]
+listaImagensFrente = ["sprites/RamesesD.png","sprites/RamesesD.png", "sprites/RamesesD.png"]
+listaImagensLadoEsquerdo = ["sprites/RamesesL.png", "sprites/RamesesL.png", "sprites/RamesesL.png"]
+listaImagensLadoDireito = ["sprites/RamesesR.png","sprites/RamesesR.png", "sprites/RamesesR.png"]
+listaImagensCostas = ["sprites/RamesesU.png", "sprites/RamesesU.png", "sprites/RamesesU.png"]
 
 
 listaImagens = [
