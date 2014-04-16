@@ -5,10 +5,10 @@ Módulo de Cores do jogo
 '''
 
 
-preto = (0, 0, 0)
-branco = (255, 255, 255)
-azul = (0, 0, 255)
-vermelho = (255, 0, 0)
-verde = (0, 255, 0)
+black = (0, 0, 0)
+white = (255, 255, 255)
+blue = (0, 0, 255)
+red = (255, 0, 0)
+green = (0, 255, 0)
 magenta = (255, 0, 255)
-roxo = (128, 0, 128)
+purple = (128, 0, 128)
