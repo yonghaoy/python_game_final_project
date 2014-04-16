@@ -7,89 +7,89 @@ import sys
 from pygame.sprite import Sprite, RenderUpdates
 FPS = 16
 
-filaF, filaC, filaE, filaD = 0, 0, 0, 0
+rowF, rowC, rowE, rowD = 0, 0, 0, 0
 
-listaImagensFrente = ["sprites/RamesesD.png","sprites/RamesesD.png", "sprites/RamesesD.png"]
-listaImagensLadoEsquerdo = ["sprites/RamesesL.png", "sprites/RamesesL.png", "sprites/RamesesL.png"]
-listaImagensLadoDireito = ["sprites/RamesesR.png","sprites/RamesesR.png", "sprites/RamesesR.png"]
-listaImagensCostas = ["sprites/RamesesU.png", "sprites/RamesesU.png", "sprites/RamesesU.png"]
+listImagensFrente = ["sprites/RamesesD.png","sprites/RamesesD.png", "sprites/RamesesD.png"]
+listImagensLadoEsquerdo = ["sprites/RamesesL.png", "sprites/RamesesL.png", "sprites/RamesesL.png"]
+listImagensLadoDireito = ["sprites/RamesesR.png","sprites/RamesesR.png", "sprites/RamesesR.png"]
+listImagensCostas = ["sprites/RamesesU.png", "sprites/RamesesU.png", "sprites/RamesesU.png"]
 
 
-listaImagens = [
-listaImagensFrente,
-listaImagensLadoEsquerdo,
-listaImagensLadoDireito,
-listaImagensCostas
+listImagens = [
+listImagensFrente,
+listImagensLadoEsquerdo,
+listImagensLadoDireito,
+listImagensCostas
 ]
 
 # move player to left
 
 
-def MPL(teclas,personagem):
-    global filaE
-    if teclas[K_LEFT] and not teclas[K_DOWN] and not teclas[K_UP]:
-        personagem.image = pygame.image.load(listaImagensLadoEsquerdo[filaE])
-        personagem.converterImagem()
-        personagem.mover(-10, 0)
-        personagem.px -= 1
-        filaE += 1
-        if filaE > 2:
-            filaE = 0
-#mover personagem para a direita
+def MPL(keys,personagem):
+	global rowE
+	if keys[K_LEFT] and not keys[K_DOWN] and not keys[K_UP]:
+		personagem.image = pygame.image.load(listImagensLadoEsquerdo[rowE])
+		personagem.converterImagem()
+		personagem.mover(-10, 0)
+		personagem.px -= 1
+		rowE += 1
+		if rowE > 2:
+			rowE = 0
+#move player right
 
 
-def MPR(teclas,personagem):
-    global filaD
-    if teclas[K_RIGHT] and not teclas[K_DOWN] and not teclas[K_UP]:
-        personagem.image = pygame.image.load(listaImagensLadoDireito[filaD])
-        personagem.converterImagem()
-        personagem.mover(10, 0)
-        personagem.px += 1
-        filaD += 1
-        if filaD > 2:
-            filaD = 0
+def MPR(keys,personagem):
+	global rowD
+	if keys[K_RIGHT] and not keys[K_DOWN] and not keys[K_UP]:
+		personagem.image = pygame.image.load(listImagensLadoDireito[rowD])
+		personagem.converterImagem()
+		personagem.mover(10, 0)
+		personagem.px += 1
+		rowD += 1
+		if rowD > 2:
+			rowD = 0
 
-# mover plater up
+# mover player up
 
 
-def MPU(teclas,personagem):
-    global filaC
-    if teclas[K_UP]:
-        personagem.image = pygame.image.load(listaImagensCostas[filaC])
-        personagem.converterImagem()
-        personagem.mover(0, -10)
-        personagem.py -= 1
-        filaC += 1
-        if filaC > 2:
-            filaC = 0
+def MPU(keys,personagem):
+	global rowC
+	if keys[K_UP]:
+		personagem.image = pygame.image.load(listImagensCostas[rowC])
+		personagem.converterImagem()
+		personagem.mover(0, -10)
+		personagem.py -= 1
+		rowC += 1
+		if rowC > 2:
+			rowC = 0
 
 # mover personagem para baixo
 
 
-def MPD(teclas,personagem):
-    global filaF
-    if teclas[K_DOWN]:
-        personagem.image = pygame.image.load(listaImagensFrente[filaF])
-        personagem.converterImagem()
-        personagem.mover(0, 10)
-        personagem.py += 1
-        filaF += 1
-        if filaF > 2:
-            filaF = 0
+def MPD(keys,personagem):
+	global rowF
+	if keys[K_DOWN]:
+		personagem.image = pygame.image.load(listImagensFrente[rowF])
+		personagem.converterImagem()
+		personagem.mover(0, 10)
+		personagem.py += 1
+		rowF += 1
+		if rowF > 2:
+			rowF = 0
 
 #=======================
 
 def main():
-	fundo, tela, clock = config()
+	background, screen, clock = config()
 
 	#================================
 	#Criação de objetos
 	musica = pygame.mixer.Sound("BGM/Firelink Shrine.wav")
-	grupo = RenderUpdates()
-	personagem = Heroi(20, 290,['nome','sobrenome','classe'],listaImagens, grupo)
-	npc = Npcs(650, 280, ['sprites/personagem2.png'], grupo)
-	npc2 = Npcs(675, 240, ["sprites/personagem.png"], grupo)
-	npc3 = Npcs(675, 340, ["sprites/personagem.png"], grupo)
+	group = RenderUpdates()
+	personagem = Heroi(20, 290,['nome','sobrenome','classe'],listImagens, group)
+	npc = Npcs(650, 280, ['sprites/personagem2.png'], group)
+	npc2 = Npcs(675, 240, ["sprites/personagem.png"], group)
+	npc3 = Npcs(675, 340, ["sprites/personagem.png"], group)
 	pygame.font.init()
 	frase = Textos(40, 'Quem eh voce e oque faz aqui?', 'carolingia.ttf')
 
@@ -107,50 +107,50 @@ def main():
 	#===================================
 	iniciarConversa = [52,6,36,-20,55,-10]
 
-	teclas = {K_LEFT: False, K_RIGHT: False, K_UP: False, K_DOWN: False,
-	          K_RETURN: False, 27: False}  # obs 27 = tecla 'esc'
+	keys = {K_LEFT: False, K_RIGHT: False, K_UP: False, K_DOWN: False,
+			  K_RETURN: False, 27: False}  # obs 27 = key 'esc'
 
 	musica.play()
-	fundo = fundo.convert()
+	background = background.convert()
 	pygame.display.flip()
 	while True:
-	    clock.tick(FPS)
+		clock.tick(FPS)
 
-	    for e in pygame.event.get([KEYUP, KEYDOWN]):
-	        valor = (e.type == KEYDOWN)
-	        if e.key in teclas.keys():
-	            teclas[e.key] = valor
+		for e in pygame.event.get([KEYUP, KEYDOWN]):
+			valor = (e.type == KEYDOWN)
+			if e.key in keys.keys():
+				keys[e.key] = valor
 
-	    if teclas[27]:  # tecla ESC
-	        pygame.quit()
-	        sys.exit()
-	    if personagem.py in l1:  #player in the top
-	        MPD(teclas,personagem)
-	        MPR(teclas,personagem)
-	        MPL(teclas,personagem)
-	    elif personagem.py in l2: #player in the bottom
-	        MPT(teclas,personagem)
-	        MPR(teclas,personagem)
-	        MPL(teclas,personagem)
-	    else:
-	        MPU(teclas,personagem)
-	        MPD(teclas,personagem)
-	        MPL(teclas,personagem)
-	        MPR(teclas,personagem)
+		if keys[27]:  # key ESC
+			pygame.quit()
+			sys.exit()
+		if personagem.py in l1:  #player in the top
+			MPD(keys,personagem)
+			MPR(keys,personagem)
+			MPL(keys,personagem)
+		elif personagem.py in l2: #player in the bottom
+			MPT(keys,personagem)
+			MPR(keys,personagem)
+			MPL(keys,personagem)
+		else:
+			MPU(keys,personagem)
+			MPD(keys,personagem)
+			MPL(keys,personagem)
+			MPR(keys,personagem)
 
-	    if personagem.px == iniciarConversa[0] and personagem.py == iniciarConversa[1]:
-             import squirrel
-             squirrel.main()
-	    if personagem.px == iniciarConversa[2] and personagem.py == iniciarConversa[3]:
-             import flippy
-             flippy.main()
-	    if personagem.px == iniciarConversa[4] and personagem.py == iniciarConversa[5]:
-             import wormy
-             wormy.main()
-	    print(personagem.px, personagem.py)
-        
-	    grupo.clear(tela, fundo)
-	    pygame.display.update(grupo.draw(tela))
+		if personagem.px == iniciarConversa[0] and personagem.py == iniciarConversa[1]:
+			 import squirrel
+			 squirrel.main()
+		if personagem.px == iniciarConversa[2] and personagem.py == iniciarConversa[3]:
+			 import flippy
+			 flippy.main()
+		if personagem.px == iniciarConversa[4] and personagem.py == iniciarConversa[5]:
+			 import wormy
+			 wormy.main()
+		print(personagem.px, personagem.py)
+		
+		group.clear(screen, background)
+		pygame.display.update(group.draw(screen))
 
 
 
