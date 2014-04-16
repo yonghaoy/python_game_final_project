@@ -12,7 +12,7 @@ WINHEIGHT = 480 # height in pixels
 HALF_WINWIDTH = int(WINWIDTH / 2)
 HALF_WINHEIGHT = int(WINHEIGHT / 2)
 
-GRASSCOLOR = (24, 255, 0)
+GRASSCOLOR = (75, 105, 54)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 
@@ -35,27 +35,27 @@ LEFT = 'left'
 RIGHT = 'right'
 
 """
-This program has three data structures to represent the player, enemy devils, and grass background objects. The data structures are dictionaries with the following keys:
+This program has three data structures to represent the player ram, enemy devils, and grass background objects. The data structures are dictionaries with the following keys:
 
 Keys used by all three data structures:
     'x' - the left edge coordinate of the object in the game world (not a pixel coordinate on the screen)
     'y' - the top edge coordinate of the object in the game world (not a pixel coordinate on the screen)
     'rect' - the pygame.Rect object representing where on the screen the object is located.
 Player data structure keys:
-    'surface' - the pygame.Surface object that stores the image of the squirrel which will be drawn to the screen.
+    'surface' - the pygame.Surface object that stores the image of the ram (player) which will be drawn to the screen.
     'facing' - either set to LEFT or RIGHT, stores which direction the player is facing.
     'size' - the width and height of the player in pixels. (The width & height are always the same.)
     'bounce' - represents at what point in a bounce the player is in. 0 means standing (no bounce), up to BOUNCERATE (the completion of the bounce)
     'health' - an integer showing how many more times the player can be hit by a larger devil before dying.
 Enemy Devil data structure keys:
-    'surface' - the pygame.Surface object that stores the image of the squirrel which will be drawn to the screen.
-    'movex' - how many pixels per frame the squirrel moves horizontally. A negative integer is moving to the left, a positive to the right.
-    'movey' - how many pixels per frame the squirrel moves vertically. A negative integer is moving up, a positive moving down.
-    'width' - the width of the squirrel's image, in pixels
-    'height' - the height of the squirrel's image, in pixels
+    'surface' - the pygame.Surface object that stores the image of the devil which will be drawn to the screen.
+    'movex' - how many pixels per frame the devil moves horizontally. A negative integer is moving to the left, a positive to the right.
+    'movey' - how many pixels per frame the devil moves vertically. A negative integer is moving up, a positive moving down.
+    'width' - the width of the devil's image, in pixels
+    'height' - the height of the devil's image, in pixels
     'bounce' - represents at what point in a bounce the player is in. 0 means standing (no bounce), up to BOUNCERATE (the completion of the bounce)
-    'bouncerate' - how quickly the squirrel bounces. A lower number means a quicker bounce.
-    'bounceheight' - how high (in pixels) the squirrel bounces
+    'bouncerate' - how quickly the devil bounces. A lower number means a quicker bounce.
+    'bounceheight' - how high (in pixels) the devil bounces
 Grass data structure keys:
     'grassImage' - an integer that refers to the index of the pygame.Surface object in GRASSIMAGES used for this grass object
 """
@@ -71,9 +71,9 @@ def main():
     BASICFONT = pygame.font.Font('freesansbold.ttf', 32)
 
     # load the image files
-    L_RAM_IMG = pygame.image.load('sprites/ramesesL.png')
+    L_RAM_IMG = pygame.image.load('ramesesL.png')
     R_RAM_IMG = pygame.transform.flip(L_RAM_IMG, True, False)
-    L_DEVIL_IMG = pygame.image.load('sprites/devilL.png')
+    L_DEVIL_IMG = pygame.image.load('devilL.png')
     R_DEVIL_IMG = pygame.transform.flip(L_DEVIL_IMG, True, False)
     GRASSIMAGES = []
     for i in range(1, 5):
@@ -360,7 +360,7 @@ def makeNewDevil(camerax, cameray):
     generalSize = random.randint(5, 25)
     multiplier = random.randint(1, 3)
     dv['width']  = (generalSize + random.randint(0, 10)) * multiplier
-    dv['height'] = (generalSize + random.randint(0, 10)) * multiplier
+    dv['height'] = (dv['width'])
     dv['x'], dv['y'] = getRandomOffCameraPos(camerax, cameray, dv['width'], dv['height'])
     dv['movex'] = getRandomVelocity()
     dv['movey'] = getRandomVelocity()
