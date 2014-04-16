@@ -14,24 +14,24 @@ from Cores import *
 
 class Personagens(Sprite):
   '''
-   *listaImagens sao as imagens reference ao personagem'''
+   *rowImagens sao as imagens reference ao personagem'''
 
-  def __init__(self, pxInicial, pyInicial,listaImagens, *grupos):
-        Sprite.__init__(self, *grupos)
+  def __init__(self, pxInicial, pyInicial,rowImagens, *groups):
+        Sprite.__init__(self, *groups)
         self.pxInicial = pxInicial
         self.pyInicial = pyInicial
         self.px = 0
         self.py = 0
         self.rect = Rect(self.pxInicial, self.pyInicial, 0, 0)
 
-        if len(listaImagens) == 1: # para personagens que não se movimentaram 
-          self.image = pygame.image.load(listaImagens[0])
+        if len(rowImagens) == 1: # para personagens que não se movimentaram 
+          self.image = pygame.image.load(rowImagens[0])
         else:
-          self.image = pygame.image.load(listaImagens[0][0])
+          self.image = pygame.image.load(rowImagens[0][0])
         self.image.set_alpha(None, RLEACCEL)  # disable alpha
         self.image.convert()
         self.image.set_colorkey(magenta, RLEACCEL) #coloca a cor magenta como transparente
-        pygame.draw.rect(self.image, preto, self) #Desenha a imagem na tela
+        pygame.draw.rect(self.image, black, self) #Desenha a imagem na tela
 
   def mover(self, x, y):
     self.rect.move_ip(x, y)
@@ -46,8 +46,8 @@ class Heroi(Personagens):
   ''' classe que contem os dados do nosso herói
   '''
 
-  def __init__(self,pxInicial, pyInicial,dados,listaImagens, *grupos):
-    Personagens.__init__(self,pxInicial, pyInicial,listaImagens, *grupos)
+  def __init__(self,pxInicial, pyInicial,dados,rowImagens, *groups):
+    Personagens.__init__(self,pxInicial, pyInicial,rowImagens, *groups)
     self.nome = dados[0]
     self.vida = dados[1]
     self.classe = dados[2]    
@@ -58,8 +58,8 @@ class Npcs(Personagens):
   classe que contem os dados dos Npcs
   '''
 
-  def __init__(self,pxInicial,pyInicial,listaImagens,*grupos):
-    Personagens.__init__(self,pxInicial,pyInicial,listaImagens,*grupos)
+  def __init__(self,pxInicial,pyInicial,rowImagens,*groups):
+    Personagens.__init__(self,pxInicial,pyInicial,rowImagens,*groups)
 
 
 class Textos():
@@ -67,7 +67,7 @@ class Textos():
     Classe que gerencia todos os textos do jogo.Class that manages all texts in the game
     '''
 
-    def __init__(self, tamanho, dialogo, arquivoDeFonte, cor=branco, antialias=True):  # antialias faz um tratamento na imagem
+    def __init__(self, tamanho, dialogo, arquivoDeFonte, cor=white, antialias=True):  # antialias faz um tratamento na imagem
         #pygame.font.init()
         self.tamanho = tamanho  # tamanho da frase
         self.dialogo = dialogo  # frase
