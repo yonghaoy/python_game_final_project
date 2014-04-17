@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+# Base/source code from Iury Alves' RPG-Pygame project
+# Under MIT License
+# https://github.com/IuryAlves/RPG-Pygame
+
 import pygame
 from pygame.locals import *
 from pygame.sprite import RenderUpdates

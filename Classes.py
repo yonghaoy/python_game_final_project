@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+# Base/source code from Iury Alves' RPG-Pygame project
+# Under MIT License
+# https://github.com/IuryAlves/RPG-Pygame
+
 try:
   import pygame
 except Exception:
