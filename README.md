@@ -19,7 +19,7 @@ We have used the Pygame library, GIMP, and Tilex to create this project.
 Games made with Python script and the Pygame library. Original contributers are Yonghao Yu, 
 Libby Livingston, and Mao Xuxiang. 
 License can be found at: [LICENSE.md](../master/LICENSE.md)
-Contributer guidelines here: [CONTRIBUTERGUIDLEINES.md](../master/CONTRIUBTERGUIDELINES.md)
+Contributer guidelines here: [CONTRIBUTERGUIDELINES.md](../master/CONTRIBUTERGUIDELINES.md)
 Fork it if you'd like!
 
 ## Future Scope
