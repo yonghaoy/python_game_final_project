@@ -88,7 +88,7 @@ def main():
 
 	#================================
 	#Criação de objetos
-	musica = pygame.mixer.Sound("BGM/hark_the_sound.mp3")
+	musica = pygame.mixer.Sound("BGM/hark_the_sound.wav")
 	group = RenderUpdates()
 	personagem = Heroi(20, 290,['nome','sobrenome','classe'],listImagens, group)
 	npc = Npcs(650, 280, ['sprites/personagem2.png'], group)
