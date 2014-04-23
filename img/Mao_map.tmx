@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="19" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="dg_edging132" tilewidth="32" tileheight="32">
+  <image source="dg_edging132.gif" width="256" height="512"/>
+ </tileset>
+ <tileset firstgid="129" name="dg_edging232" tilewidth="32" tileheight="32">
+  <image source="dg_edging232.gif" width="256" height="544"/>
+ </tileset>
+ <tileset firstgid="265" name="dg_features32" tilewidth="32" tileheight="32">
+  <image source="dg_features32.gif" width="288" height="416"/>
+ </tileset>
+ <tileset firstgid="382" name="dg_grounds32" tilewidth="32" tileheight="32">
+  <image source="dg_grounds32.gif" width="288" height="608"/>
+ </tileset>
+ <tileset firstgid="553" name="DSC01232_副本" tilewidth="32" tileheight="32">
+  <image source="DSC01232_副本.jpg" width="170" height="128"/>
+ </tileset>
+ <tileset firstgid="573" name="ccm1_032756_副本" tilewidth="64" tileheight="64">
+  <image source="ccm1_032756_副本.jpg" width="234" height="160"/>
+ </tileset>
+ <tileset firstgid="579" name="Old-Well_副本" tilewidth="32" tileheight="32">
+  <image source="Old-Well_副本.jpg" width="143" height="96"/>
+ </tileset>
+ <tileset firstgid="591" name="lenoir-hall-2_副本" tilewidth="64" tileheight="64">
+  <image source="lenoir-hall-2_副本.jpg" width="192" height="128"/>
+ </tileset>
+ <layer name="块层 1" width="25" height="19">
+  <data encoding="base64" compression="zlib">
+   eJytlElOAzEQRd29zT0i0UyGhjDP8zzehiWLPgDbHKMByUKsgKMAS6RsWAHf6rJS/LQhQrT0VHHZqV/lsl0mxhSgmVaWuQUDmMvAIBgCw6CsWavx8y1gZezUnKOx1xhBzFFgwRgYj2iEPEP8AMdkLU+O/06ASdACU33UoTXYz/V6phFzBsyCOTAvGrGvkXbjW8qX6+G5thDGR2kV81jsiViuYw3+dbABNiN74GSt1ij6rMOzhfE22AG7v+wza5xK3mdiz8Vyz/fg3wcH4FA0ckH/zkmjo3qYiT/W8zbhVOySdMKakggaDTm73jZlv/Iajb+QKZ1+/f+hqzWe0aNL8AJeTXdfLui3Jpc9tSoO97GlYpSw1+AGvJlqTp+tDvUv3NPYZ2vW38F/Be6VRux8hHvi4yzIOV0Uu6TuH79ZD/A/gifwbr7fuZJy18S+utw+4f8wlTVJ/H0MuRVSx7LkvSJ2Ne3ulc7TJr3veuyN11gF+356dx3NuaS3F4EmvUfhvOk4uo66M8N+G1lbpxPQvi8qWskV
+  </data>
+ </layer>
+</map>
