@@ -9,14 +9,14 @@ from Classes import *
 from Cores import *
 import sys
 from pygame.sprite import Sprite, RenderUpdates
+
 FPS = 16
 
-rowF, rowC, rowE, rowD = 0, 0, 0, 0
 
-listImagensFrente = ["sprites/RamesesD.png","sprites/RamesesD.png", "sprites/RamesesD.png"]
-listImagensLadoEsquerdo = ["sprites/RamesesL.png", "sprites/RamesesL.png", "sprites/RamesesL.png"]
-listImagensLadoDireito = ["sprites/RamesesR.png","sprites/RamesesR.png", "sprites/RamesesR.png"]
-listImagensCostas = ["sprites/RamesesU.png", "sprites/RamesesU.png", "sprites/RamesesU.png"]
+listImagensFrente = "sprites/RamesesD.png"
+listImagensLadoEsquerdo = "sprites/RamesesL.png"
+listImagensLadoDireito = "sprites/RamesesR.png"
+listImagensCostas = "sprites/RamesesU.png"
 
 
 listImagens = [
@@ -30,56 +30,42 @@ listImagensCostas
 
 
 def MPL(keys,personagem):
-	global rowE
 	if keys[K_LEFT] and not keys[K_DOWN] and not keys[K_UP]:
-		personagem.image = pygame.image.load(listImagensLadoEsquerdo[rowE])
+		personagem.image = pygame.image.load(listImagensLadoEsquerdo)
 		personagem.converterImagem()
 		personagem.mover(-10, 0)
 		personagem.px -= 1
-		rowE += 1
-		if rowE > 2:
-			rowE = 0
+		
 #move player right
 
 
 def MPR(keys,personagem):
-	global rowD
 	if keys[K_RIGHT] and not keys[K_DOWN] and not keys[K_UP]:
-		personagem.image = pygame.image.load(listImagensLadoDireito[rowD])
+		personagem.image = pygame.image.load(listImagensLadoDireito)
 		personagem.converterImagem()
 		personagem.mover(10, 0)
 		personagem.px += 1
-		rowD += 1
-		if rowD > 2:
-			rowD = 0
 
 # mover player up
 
 
 def MPU(keys,personagem):
-	global rowC
 	if keys[K_UP]:
-		personagem.image = pygame.image.load(listImagensCostas[rowC])
+		personagem.image = pygame.image.load(listImagensCostas)
 		personagem.converterImagem()
 		personagem.mover(0, -10)
 		personagem.py -= 1
-		rowC += 1
-		if rowC > 2:
-			rowC = 0
 
 # mover personagem para baixo
 
 
 def MPD(keys,personagem):
-	global rowF
 	if keys[K_DOWN]:
-		personagem.image = pygame.image.load(listImagensFrente[rowF])
+		personagem.image = pygame.image.load(listImagensFrente)
 		personagem.converterImagem()
 		personagem.mover(0, 10)
 		personagem.py += 1
-		rowF += 1
-		if rowF > 2:
-			rowF = 0
+		
 
 #=======================
 

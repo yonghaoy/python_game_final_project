@@ -27,11 +27,8 @@ class Personagens(Sprite):
         self.px = 0
         self.py = 0
         self.rect = Rect(self.pxInicial, self.pyInicial, 0, 0)
+        self.image = pygame.image.load(rowImagens[0])
 
-        if len(rowImagens) == 1: # para personagens que não se movimentaram 
-          self.image = pygame.image.load(rowImagens[0])
-        else:
-          self.image = pygame.image.load(rowImagens[0][0])
         self.image.set_alpha(None, RLEACCEL)  # disable alpha
         self.image.convert()
         self.image.set_colorkey(magenta, RLEACCEL) #coloca a cor magenta como transparente
@@ -99,8 +96,3 @@ class Pontos(object):
     self.pontos = pontos
     self.pontosX = pontos[0]
     self.pontosY = pontos[1]
-
-  
-
-
-  
