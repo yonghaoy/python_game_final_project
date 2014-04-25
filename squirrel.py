@@ -77,7 +77,7 @@ def main():
     R_DEVIL_IMG = pygame.transform.flip(L_DEVIL_IMG, True, False)
     GRASSIMAGES = []
     for i in range(1, 5):
-        GRASSIMAGES.append(pygame.image.load('grass%s.png' % i))
+        GRASSIMAGES.append(pygame.image.load('/img/grass%s.png' % i))
 
     while True:
         runGame()
