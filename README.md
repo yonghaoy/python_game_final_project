@@ -25,7 +25,8 @@ Fork it if you'd like!
 ## Future Scope
 
 What's next for this project?
-
+See our milestones for the following:
+We eventually hope to have a tutorial for new players and a save function.
 
 
 
