@@ -81,7 +81,7 @@ def main():
 	npc2 = Npcs(675, 240, ["sprites/devilR.png"], group)
   	npc3 = Npcs(675, 340, ["sprites/devilL.png"], group)
 	pygame.font.init()
-	frase = Textos(40, 'Nyeh nyeh nyeh!!', 'carolingia.ttf')
+	frase = Textos(40, 'Nyeh nyeh nyeh!!', 'fonts/carolingia.ttf')
 
 	#===================================
 
