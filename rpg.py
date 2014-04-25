@@ -74,14 +74,14 @@ def main():
 
 	#================================
 	#Criação de objetos
-	musica = pygame.mixer.Sound("BGM/hark_the_sound.wav")
+	musica = pygame.mixer.Sound("BGM/hark_the_sound.wav") #from https://alumni.unc.edu/article.aspx?sid=9630 Audio archive
 	group = RenderUpdates()
 	personagem = Heroi(20, 290,['nome','sobrenome','classe'],listImagens, group)
-	npc = Npcs(650, 280, ['sprites/personagem2.png'], group)
-	npc2 = Npcs(675, 240, ["sprites/personagem.png"], group)
-	npc3 = Npcs(675, 340, ["sprites/personagem.png"], group)
+	npc = Npcs(650, 280, ['sprites/devilL.png'], group)
+	npc2 = Npcs(675, 240, ["sprites/devilR.png"], group)
+  	npc3 = Npcs(675, 340, ["sprites/devilL.png"], group)
 	pygame.font.init()
-	frase = Textos(40, 'Quem eh voce e oque faz aqui?', 'carolingia.ttf')
+	frase = Textos(40, 'Nyeh nyeh nyeh!!', 'carolingia.ttf')
 
 	#===================================
 
