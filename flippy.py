@@ -52,12 +52,12 @@ def main():
     BIGFONT = pygame.font.Font('freesansbold.ttf', 32)
 
     # Set up the background image.
-    boardImage = pygame.image.load('flippyboard.png')
+    boardImage = pygame.image.load('img/flippyboard.png')
     # Use smoothscale() to stretch the board image to fit the entire board:
     boardImage = pygame.transform.smoothscale(boardImage, (BOARDWIDTH * SPACESIZE, BOARDHEIGHT * SPACESIZE))
     boardImageRect = boardImage.get_rect()
     boardImageRect.topleft = (XMARGIN, YMARGIN)
-    BGIMAGE = pygame.image.load('flippybackground.png')
+    BGIMAGE = pygame.image.load('img/flippybackground.png')
     # Use smoothscale() to stretch the background image to fit the entire window:
     BGIMAGE = pygame.transform.smoothscale(BGIMAGE, (WINDOWWIDTH, WINDOWHEIGHT))
     BGIMAGE.blit(boardImage, boardImageRect)
