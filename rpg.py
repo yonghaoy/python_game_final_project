@@ -31,7 +31,7 @@ listImagensCostas
 
 def MPL(keys,personagem):
 	if keys[K_LEFT] and not keys[K_DOWN] and not keys[K_UP]:
-		personagem.image = pygame.image.load(listImagensLadoEsquerdo).convert_alpha()
+		personagem.image = pygame.image.load(listImagensLadoEsquerdo)
 		personagem.converterImagem()
 		personagem.mover(-10, 0)
 		personagem.px -= 1
@@ -41,7 +41,7 @@ def MPL(keys,personagem):
 
 def MPR(keys,personagem):
 	if keys[K_RIGHT] and not keys[K_DOWN] and not keys[K_UP]:
-		personagem.image = pygame.image.load(listImagensLadoDireito).convert_alpha()
+		personagem.image = pygame.image.load(listImagensLadoDireito)
 		personagem.converterImagem()
 		personagem.mover(10, 0)
 		personagem.px += 1
@@ -51,7 +51,7 @@ def MPR(keys,personagem):
 
 def MPU(keys,personagem):
 	if keys[K_UP]:
-		personagem.image = pygame.image.load(listImagensCostas).convert_alpha()
+		personagem.image = pygame.image.load(listImagensCostas)
 		personagem.converterImagem()
 		personagem.mover(0, -10)
 		personagem.py -= 1
@@ -61,7 +61,7 @@ def MPU(keys,personagem):
 
 def MPD(keys,personagem):
 	if keys[K_DOWN]:
-		personagem.image = pygame.image.load(listImagensFrente).convert_alpha()
+		personagem.image = pygame.image.load(listImagensFrente)
 		personagem.converterImagem()
 		personagem.mover(0, 10)
 		personagem.py += 1
