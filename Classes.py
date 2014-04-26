@@ -29,8 +29,7 @@ class Personagens(Sprite):
         self.rect = Rect(self.pxInicial, self.pyInicial, 0, 0)
         self.image = pygame.image.load(rowImagens[0])
 
-        self.image.set_alpha(None, RLEACCEL)  # disable alpha
-        self.image.convert()
+        self.image.convert_alpha()
         self.image.set_colorkey(magenta, RLEACCEL) #coloca a cor magenta como transparente
         pygame.draw.rect(self.image, black, self) #Desenha a imagem na tela
 
@@ -38,9 +37,7 @@ class Personagens(Sprite):
     self.rect.move_ip(x, y)
 
   def converterImagem(self):
-    self.image.set_alpha(None, RLEACCEL)  # disable alpha
-    self.image.convert()
-    self.image.set_colorkey(magenta, RLEACCEL)
+    self.image.convert_alpha()
 
 
 class Heroi(Personagens):
