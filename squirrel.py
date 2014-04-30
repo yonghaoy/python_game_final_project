@@ -65,7 +65,7 @@ def main():
 
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
-    pygame.display.set_icon(pygame.image.load('gameicon.png'))
+    pygame.display.set_icon(pygame.image.load('img/gameicon.png'))
     DISPLAYSURF = pygame.display.set_mode((WINWIDTH, WINHEIGHT))
     pygame.display.set_caption('Eat in UNC')
     BASICFONT = pygame.font.Font('freesansbold.ttf', 32)
