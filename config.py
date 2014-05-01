@@ -21,6 +21,6 @@ def config():
     c_screen = pygame.display.set_mode(Screen_Size)  # Set map size
     pygame.display.set_caption(NAME)
     c_clock = pygame.time.Clock()
-    c_background = pygame.image.load("img/Mao_map_new.png")
+    c_background = pygame.image.load("img/bg_map.png")
     c_screen.blit(c_background, (0, 0)) # copy image from background
     return c_background, c_screen, c_clock
